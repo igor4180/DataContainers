@@ -1,4 +1,4 @@
-#include<iostream>
+п»ї#include<iostream>
 using namespace std;
 using std::cin;
 using std::cout;
@@ -32,7 +32,7 @@ class List
 public:
 	List()
 	{
-		Head = Tail = nullptr;//Когда список пуст, его Голова и Хвост указывают на 0
+		Head = Tail = nullptr;//РљРѕРіРґР° СЃРїРёСЃРѕРє РїСѓСЃС‚, РµРіРѕ Р“РѕР»РѕРІР° Рё РҐРІРѕСЃС‚ СѓРєР°Р·С‹РІР°СЋС‚ РЅР° 0
 		size = 0;
 		cout << "LConstructor:\t" << this << endl;
 	}
@@ -139,7 +139,7 @@ public:
 	{
 		if (index >= size)return;
 		if (index == 0)return pop_front();
-		//1) Доходим до удаляемого элемента:
+		//1) Р”РѕС…РѕРґРёРј РґРѕ СѓРґР°Р»СЏРµРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р°:
 		Element* Temp;
 		if (index < size / 2)
 		{
@@ -151,10 +151,10 @@ public:
 			Temp = Tail;
 			for (int i = 0; i < size - index - 1; i++)Temp = Temp->pPrev;
 		}
-		//2) Исключаем элемент из списка:
+		//2) РСЃРєР»СЋС‡Р°РµРј СЌР»РµРјРµРЅС‚ РёР· СЃРїРёСЃРєР°:
 		Temp->pPrev->pNext = Temp->pNext;
 		Temp->pNext->pPrev = Temp->pPrev;
-		//3) Удаляем элемент из памяти:
+		//3) РЈРґР°Р»СЏРµРј СЌР»РµРјРµРЅС‚ РёР· РїР°РјСЏС‚Рё:
 		delete Temp;
 		size--;
 	}
@@ -165,14 +165,14 @@ public:
 		cout << "Head: " << Head << endl;
 		for (Element* Temp = Head; Temp; Temp = Temp->pNext)
 			cout << Temp->pPrev << tab << Temp << tab << Temp->Data << tab << Temp->pNext << endl;
-		cout << "Количество элементов " << size << endl;
+		cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ " << size << endl;
 	}
 	void reverse_print()const
 	{
 		cout << "Tail: " << Tail << endl;
 		for (Element* Temp = Tail; Temp; Temp = Temp->pPrev)
 			cout << Temp->pPrev << tab << Temp << tab << Temp->Data << tab << Temp->pNext << endl;
-		cout << "Количество элементов " << size << endl;
+		cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ " << size << endl;
 	}
 };
 
@@ -180,7 +180,7 @@ void main()
 {
 	setlocale(LC_ALL, "");
 	int n;
-	cout << "Введите размер списка: "; cin >> n;
+	cout << "Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂ СЃРїРёСЃРєР°: "; cin >> n;
 	List list;
 	for (int i = 0; i < n; i++)
 	{
@@ -192,12 +192,12 @@ void main()
 
 	int value;
 	int index;
-	cout << "Введите значение добавляемого элемента: "; cin >> value;
-	cout << "Введите индекс добавляемого элемента: "; cin >> index;
+	cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РґРѕР±Р°РІР»СЏРµРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р°: "; cin >> value;
+	cout << "Р’РІРµРґРёС‚Рµ РёРЅРґРµРєСЃ РґРѕР±Р°РІР»СЏРµРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р°: "; cin >> index;
 	list.insert(value, index);
 	list.print();
 	list.reverse_print();
-	cout << "Введите индекс удаляемого элемента: "; cin >> index;
+	cout << "Р’РІРµРґРёС‚Рµ РёРЅРґРµРєСЃ СѓРґР°Р»СЏРµРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р°: "; cin >> index;
 	list.erase(index);
 	list.print();
 	list.reverse_print();
