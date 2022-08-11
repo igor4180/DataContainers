@@ -19,11 +19,17 @@ class List
 		Element(T Data, Element* pNext = nullptr, Element* pPrev = nullptr)
 			:Data(Data), pNext(pNext), pPrev(pPrev)
 		{
+#ifdef DEBUG
 			cout << "EConstructor:\t" << this << endl;
+#endif // DEBUG
+
 		}
 		~Element()
 		{
+#ifdef DEBUG
 			cout << "EDestructor:\t" << this << endl;
+#endif // DEBUG
+
 		}
 		friend class List;
 		friend class ConstIterator;
@@ -38,11 +44,17 @@ class List
 	public:
 		ConstBaseIterator(Element* Temp = nullptr) :Temp(Temp)
 		{
+#ifdef DEBUG
 			cout << "CBItConstructor:\t" << this << endl;
+#endif // DEBUG
+
 		}
 		~ConstBaseIterator()
 		{
+#ifdef DEBUG
 			cout << "CBItDestructor:\t" << this << endl;
+#endif // DEBUG
+
 		}
 
 		bool operator==(const ConstBaseIterator& other)const
@@ -181,6 +193,14 @@ public:
 	{
 		return nullptr;
 	}
+	ReverseIterator rbegin()
+	{
+		return Tail;
+	}
+	ReverseIterator rend()
+	{
+		return nullptr;
+	}
 
 	List()
 	{
@@ -199,7 +219,14 @@ public:
 	}
 	List(const List<T>& other) :List()
 	{
-		for (ConstIterator it = other.cbegin(); it != other.cend(); ++it)push_back(*it);
+		//for (ConstIterator it = other.cbegin(); it != other.cend(); ++it)push_back(*it);
+		*this = other;
+		cout << "LCopyConstructor:\t" << this << endl;
+	}
+	List(List<T>&& other):List()
+	{
+		*this = std::move(other);
+		cout << "LMoveConstructor:\t" << this << endl;
 	}
 	~List()
 	{
@@ -207,6 +234,31 @@ public:
 		while (Tail)pop_back();
 		cout << "LDestrcutor:\t" << this << endl;
 	}
+
+	//		Operators
+
+	List<T>& operator=(const List<T>& other)
+	{
+		if (this == &other)return *this;
+		while (Head)pop_front();
+		for (List<T>::ConstIterator it = other.cbegin(); it != other.cend(); ++it)
+			push_back(*it);
+		cout << "LCopyAssignment:\t" << this << endl;
+		return *this;
+	}
+	List<T>& operator=(List<T>&& other)
+	{
+		if (this == &other)return *this;
+		while (Head)pop_front();
+		this->Head = other.Head;
+		this->Tail = other.Tail;
+		this->size = other.size;
+		other.Head = nullptr;
+		other.Tail = nullptr;
+		other.size = 0;
+		cout << "LMoveAssignment:\t" << this << endl;
+	}
+
 
 	//					Adding Elements:
 	void push_front(T Data)
@@ -421,4 +473,11 @@ void main()
 	for (int i : list1)cout << i << tab; cout << endl;
 	for (int i : list2)cout << i << tab; cout << endl;
 	for (int i : list3)cout << i << tab; cout << endl;
-}
+
+	List<double> d_list = { 1.5, 2.7, 3.14, 8.3 };
+	d_list.print();
+	for (double i : d_list)cout << i << tab; cout << endl;
+	for (List<double>::ReverseIterator rit = d_list.rbegin(); rit != d_list.rend(); ++rit)
+		cout << *rit << tab;
+	cout << endl;
+	}
