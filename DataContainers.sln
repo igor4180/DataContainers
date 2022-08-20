@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "List2", "List2\List2.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Exeptions", "Exeptions\Exeptions.vcxproj", "{5FD55BF7-CE8B-4CA7-BC21-3FC8C5CB19ED}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BinaryTree", "BinaryTree\BinaryTree.vcxproj", "{F6CC884E-B6FB-438C-86AD-49AE6F76A5D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{5FD55BF7-CE8B-4CA7-BC21-3FC8C5CB19ED}.Release|x64.Build.0 = Release|x64
 		{5FD55BF7-CE8B-4CA7-BC21-3FC8C5CB19ED}.Release|x86.ActiveCfg = Release|Win32
 		{5FD55BF7-CE8B-4CA7-BC21-3FC8C5CB19ED}.Release|x86.Build.0 = Release|Win32
+		{F6CC884E-B6FB-438C-86AD-49AE6F76A5D0}.Debug|x64.ActiveCfg = Debug|x64
+		{F6CC884E-B6FB-438C-86AD-49AE6F76A5D0}.Debug|x64.Build.0 = Debug|x64
+		{F6CC884E-B6FB-438C-86AD-49AE6F76A5D0}.Debug|x86.ActiveCfg = Debug|Win32
+		{F6CC884E-B6FB-438C-86AD-49AE6F76A5D0}.Debug|x86.Build.0 = Debug|Win32
+		{F6CC884E-B6FB-438C-86AD-49AE6F76A5D0}.Release|x64.ActiveCfg = Release|x64
+		{F6CC884E-B6FB-438C-86AD-49AE6F76A5D0}.Release|x64.Build.0 = Release|x64
+		{F6CC884E-B6FB-438C-86AD-49AE6F76A5D0}.Release|x86.ActiveCfg = Release|Win32
+		{F6CC884E-B6FB-438C-86AD-49AE6F76A5D0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
