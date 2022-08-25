@@ -50,6 +50,12 @@ public:
 			insert(*it, Root);
 		}
 	}
+	Tree(const Tree& other) :Tree()
+	{
+		copy(other.Root);
+		cout << "CopyConstructor:\t" << this << endl;
+	}
+
 	~Tree()
 	{
 		clear(Root);
@@ -180,6 +186,13 @@ private:
 		clear(Root->pRight);
 		delete Root;
 		Root = nullptr;
+	}
+	void copy(Element* Root)
+	{
+		if (Root == nullptr)return;
+		insert(Root->Data, this->Root);
+		copy(Root->pLeft);
+		copy(Root->pRight);
 	}
 	void print(Element* Root)const
 	{
